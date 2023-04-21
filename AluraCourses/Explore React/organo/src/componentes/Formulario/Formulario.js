@@ -6,15 +6,6 @@ import { useState } from 'react'
 
 const Formulario = (props) => {
 
-    const times = [
-        'Programação',
-        'Front-End',
-        'Data Science',
-        'Ux e Design',
-        'Mobile',
-        'Inovação e Gestão'
-    ]
-
     //forçando o react a atualizar o componente novamente
     const [nome, setNome] = useState('')
     const [cargo, setCargo] = useState('')
@@ -29,7 +20,7 @@ const Formulario = (props) => {
             imagem,
             time
         })
-        console.log("Form foi submetido => ", nome, cargo, imagem, time)
+        console.log("Form fois submetido => ", nome, cargo, imagem, time)
     }
 
     return (
@@ -56,7 +47,7 @@ const Formulario = (props) => {
                 <ListaSuspensa 
                     obrigatorio={true} 
                     label="Time" 
-                    itens={times}
+                    itens={props.times}
                     valor={time}
                     aoAlterado={valor => setTime(valor)}/>
                 <Botao>
