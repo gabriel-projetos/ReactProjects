@@ -1,5 +1,6 @@
 import Colaborador from '../Colaborador/Colaborador'
 import './Time.css'
+import { v4 as uuidv4 } from 'uuid';
 
 const Time = (props) => {
     const css = { backgroundColor: props.corSecundaria }
@@ -7,7 +8,13 @@ const Time = (props) => {
     return (
         <section className='time' style={css}>
             <h3 style={{ borderColor: props.corPrimaria }}>{props.nome}</h3>
-            <Colaborador />
+            <div className='colaboradores'>
+                {props.colaboradores.map(colaborador => <Colaborador 
+                    key={uuidv4()} 
+                    nome={colaborador.nome}
+                    cargo={colaborador.cargo}
+                    imagem={colaborador.imagem} />)}
+            </div>
         </section>
     )
 }
