@@ -57,9 +57,7 @@ function App() {
       {times.map(time => 
         <Time 
           key={time.nome} 
-          nome={time.nome}
-          corPrimaria={time.corPrimaria}
-          corSecundaria={time.corSecundaria}
+          time={time}
           colaboradores={colaboradores.filter(colaborador => colaborador.time === time.nome)}
         />)}
     </div>

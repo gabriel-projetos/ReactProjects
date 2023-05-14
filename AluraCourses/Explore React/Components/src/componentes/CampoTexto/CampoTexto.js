@@ -2,8 +2,6 @@ import './CampoTexto.css'
 import { useState } from 'react'
 
 const CampoTexto = (props) => {
-    console.log(props.label)
-
     const placeholderModifiy = `${
         props.placeholder
     }...`
