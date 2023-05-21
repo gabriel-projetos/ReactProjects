@@ -5,45 +5,57 @@ import Time from './componentes/Time';
 
 function App() {
 
-  const times = [
+  const [times, setTimes] = useState([
     {
       nome: 'Programação',
-      corPrimaria: '#57C278',
-      corSecundaria: '#D9F7E9'
+      cor: '#D9F7E9'
     },
     {
       nome: 'Front-End',
-      corPrimaria: '#82CFFA',
-      corSecundaria: '#E8F8FF'
+      cor: '#E8F8FF'
     },
     {
       nome: 'Data Science',
-      corPrimaria: '#A6D157',
-      corSecundaria: '#F0F8E2'
+      cor: '#F0F8E2'
     },
     {
       nome: 'Devops',
-      corPrimaria: '#E06B69',
-      corSecundaria: '#FDE7E8'
+      cor: '#FDE7E8'
     },
     {
       nome: 'UX e Design',
-      corPrimaria: '#DB6EBF',
-      corSecundaria: '#FAE9F5'
+      cor: '#FAE9F5'
     },
     {
       nome: 'Mobile',
-      corPrimaria: '#FFBA05',
-      corSecundaria: '#FFF5D9'
+      cor: '#FFF5D9'
     },
     {
       nome: 'Inovação e Gestão',
-      corPrimaria: '#FF8A29',
-      corSecundaria: '#FFEEDF'
+      cor: '#FFEEDF'
     }
-  ]
+  ]);
 
   const [colaboradores, setColaboradores] = useState([])
+
+  function deletarColaborador(){
+    console.log("Deletando colaborador")
+  }
+
+  //O input executa o evento onChange;
+  //O onChange executa a função mudarCor;
+  //O mudarCor execute o setTimes;
+  //O setTimes muda o state;
+  //O React percebe a mudança de state e compara o Virtual DOM com o DOM real, mudando as partes necessárias (no caso tudo que está relacionado com time.cor).
+  function mudarCorTime(cor, nome){
+    setTimes(times.map(time => {
+      if(time.nome === nome){
+        time.cor = cor;
+      }
+      
+      return time;
+    }))
+  }
 
   const aoNovoColaboradorAdicionado = (colaborador) => {
     console.log(colaborador)
@@ -56,10 +68,12 @@ function App() {
       <Formulario times={times.map(time => time.nome)} aoColaboradorCadastrado={colaborador => aoNovoColaboradorAdicionado(colaborador)}/>
       {times.map(time => 
         <Time 
+          mudarCor={mudarCorTime}
           key={time.nome} 
           time={time}
           colaboradores={colaboradores.filter(colaborador => colaborador.time === time.nome)}
-        />)}
+          aoDeletar={deletarColaborador}/>
+      )}
     </div>
   );
 }
