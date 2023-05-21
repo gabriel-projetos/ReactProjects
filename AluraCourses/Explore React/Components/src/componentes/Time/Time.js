@@ -6,7 +6,7 @@ import hexToRgba  from 'hex-to-rgba';
 const Time = ({time, colaboradores, aoDeletar, mudarCor}) => {
     const css = 
     { 
-        backgroundColor: hexToRgba(time.cor, 0.6)
+        backgroundColor: hexToRgba(time.cor, 0.7)
     }
 
     return (
@@ -18,7 +18,7 @@ const Time = ({time, colaboradores, aoDeletar, mudarCor}) => {
                     return <Colaborador 
                         corDeFundo={time.cor}
                         key={uuidv4()} 
-                        nome={colaborador.nome}
+                        nome={colaborador.nome} 
                         cargo={colaborador.cargo}
                         imagem={colaborador.imagem} 
                         aoDeletar={aoDeletar}/>
