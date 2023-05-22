@@ -3,10 +3,12 @@ import CampoTexto from '../CampoTexto'
 import ListaSuspensa from '../ListaSuspensa'
 import Botao from '../Botao'
 import { useState } from 'react'
+import { v4 as uuidv4 } from 'uuid';
 
 const Formulario = (props) => {
 
     //forçando o react a atualizar o componente novamente
+    const [uid, setUuid] = useState()
     const [nome, setNome] = useState('')
     const [cargo, setCargo] = useState('')
     const [imagem, setImagem] = useState('')
@@ -14,13 +16,20 @@ const Formulario = (props) => {
 
     const aoSalvar = (event) => {
         event.preventDefault()
+        var guid = uuidv4();
+
+        console.log("uid", guid)
+
+        setUuid(guid)
+        
         props.aoColaboradorCadastrado({
+            uid,
             nome,
             cargo,
             imagem,
             time
         })
-        console.log("Form fois submetido => ", nome, cargo, imagem, time)
+        console.log("Form fois submetido => ", nome, cargo, imagem, time, uid)
 
         setNome('')
         setCargo('')
