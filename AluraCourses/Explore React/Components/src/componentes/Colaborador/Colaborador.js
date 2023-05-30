@@ -7,6 +7,8 @@ const Colaborador = ({colaborador, corDeFundo, aoDeletar}) => {
             <AiFillCloseCircle 
                 size={25} 
                 className='deletar' 
+                //Isso aí! Com esta sintaxe você está pretendendo passar o resultado da função, não a função que deveria ser executada! Isto deletará o componente assim que renderizado!
+                //onClick={aoDeletar(colaborador.uid)}
                 onClick={() => aoDeletar(colaborador.uid)}
             />    
             <div className='cabecalho' style={{backgroundColor: corDeFundo}}>
