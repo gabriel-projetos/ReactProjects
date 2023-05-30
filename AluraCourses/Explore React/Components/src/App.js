@@ -46,8 +46,9 @@ function App() {
 
   const [colaboradores, setColaboradores] = useState([])
 
-  function deletarColaborador(){
-    console.log("Deletando colaborador")
+  function deletarColaborador(id){
+    setColaboradores(colaboradores.filter(colaborador => colaborador.id !== id))
+    console.log("Deletando colaborador: ", id)
   }
 
   //O input executa o evento onChange;
