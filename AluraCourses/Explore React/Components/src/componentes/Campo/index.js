@@ -1,4 +1,4 @@
-export { default } from './CampoTexto';
+export { default } from './Campo';
 
 //import CampoTexto from "./CampoTexto";
 //export default CampoTexto

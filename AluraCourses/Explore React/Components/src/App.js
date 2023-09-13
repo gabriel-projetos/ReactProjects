@@ -71,15 +71,33 @@ function App() {
     setColaboradores([...colaboradores, colaborador])
   }
 
+  function cadastrarTime(novoTime){
+    setTimes([ ...times, { ...novoTime, id: uuidv4() }])
+  }
+
+  function resolverFavorito(id){
+    setColaboradores(colaboradores.map(colaborador => {
+      if (colaborador.id === id) {
+        colaborador.favorito = !colaborador.favorito
+        return colaborador
+      }
+    }))  
+  }
+
   return (
     <div className="App">
       <Banner />
-      <Formulario times={times.map(time => time.nome)} aoColaboradorCadastrado={colaborador => aoNovoColaboradorAdicionado(colaborador)}/>
+      <Formulario 
+        cadastrarTime={cadastrarTime}
+        times={times.map(time => time.nome)} 
+        aoColaboradorCadastrado={colaborador => aoNovoColaboradorAdicionado(colaborador)}
+      />
       {times.map(time => 
         <Time 
           mudarCor={mudarCorTime}
           key={time.nome} 
           time={time}
+          aoFavoritar={resolverFavorito}
           colaboradores={colaboradores.filter(colaborador => colaborador.time === time.nome)}
           aoDeletar={deletarColaborador}/>
       )}
